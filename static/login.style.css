@@ -1,0 +1,231 @@
+/* --- Cài đặt chung --- */
+body {
+    margin: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    /* Nền sọc chéo màu tối (giống mockup) */
+    background-color: #CFEBEF;
+    /* Màu nền tối */
+    background-image: repeating-linear-gradient(transparent 1px,
+            transparent 20px);
+
+    /* Dùng Flexbox để căn giữa cái card Log In */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+
+    background-image: 
+        /* 1. Ảnh nền mới */
+        url('/static/image for website/nua-tuyet-01-01.svg'), 
+        /* 2. Giữ lại sọc chéo nếu cần */
+        repeating-linear-gradient(transparent 1px, transparent 20px);
+        
+    /* Cấu hình hiển thị ảnh nền */
+    background-size: cover, auto; /* Ảnh nền 1: cover, Ảnh nền 2: auto (mặc định) */
+    background-position: center center, 0 0; /* Ảnh nền 1: ở giữa, Ảnh nền 2: ở góc 0 */
+    background-attachment: fixed, scroll; /* Giúp ảnh nền đứng yên khi cuộn (tùy chọn) */
+    background-color: #CFEBEF;
+    
+    /* Dùng Flexbox để căn giữa cái card Log In */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* --- Card Log In chính --- */
+.login-card {
+    display: flex;
+    /* Chia 2 cột (Form và Ảnh) */
+    width: 900px;
+    background-image: linear-gradient(to bottom, #ebfcff, #A4D8DF);
+    /* Màu vàng nhạt (từ mockup) */
+    border-radius: 25px;
+    /* Bo góc lớn */
+    overflow: hidden;
+    /* Giúp bo góc cho cả ảnh */
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+}
+
+/* --- Cột 1: Form --- */
+.login-form {
+    flex: 1;
+    /* Chiếm 1 phần */
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    /* Xếp các phần tử theo cột */
+    justify-content: center;
+}
+
+.login-form h2 {
+    font-size: 40px;
+    font-family: 'Gaegu', cursive;
+    font-weight: bolder;
+    color: #6d4b4b;
+    /* Màu đen */
+    margin-top: 0;
+    margin-bottom: 40px;
+    white-space: nowrap;
+}
+
+.login-card::before {
+    content: "";
+    /* QUAN TRỌNG: THAY background-image thành đường dẫn ảnh của bạn */
+    background-image: url('/static/image for website/qua-do-01.svg'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* Kích thước của quả mọng (Điều chỉnh theo ý bạn) */
+    width: 150px; 
+    height: 150px; 
+    
+    /* Định vị tuyệt đối */
+    position: absolute;
+    
+    /* Đặt phía trên tiêu đề một chút */
+    top: -1px; /* Điều chỉnh giá trị âm này để nâng/hạ vị trí dọc */
+    
+    /* Gán animation lắc lư vào đây */
+    animation: berry-sway 4s ease-in-out infinite; /* 4s: Thời gian một chu kỳ, ease-in-out: hiệu ứng mềm mại, infinite: lặp lại vô hạn */
+
+    /* Căn giữa tuyệt đối so với chiều rộng của khối .hero-text */
+    left: 50%;
+    transform: translateX(-50%); 
+    
+    /* Đảm bảo nó nằm trên tất cả các lớp khác (chẳng hạn như header) */
+    z-index: 1; 
+}
+
+@keyframes berry-sway {
+    0% { transform: translateX(-50%) translateY(0px); } /* Bắt đầu ở vị trí cũ, không dịch chuyển dọc */
+    25% { transform: translateX(-55%) translateY(-5px); } /* Lắc nhẹ sang trái và hơi lên */
+    50% { transform: translateX(-50%) translateY(0px); } /* Quay về vị trí cũ */
+    75% { transform: translateX(-45%) translateY(-5px); } /* Lắc nhẹ sang phải và hơi lên */
+    100% { transform: translateX(-50%) translateY(0px); } /* Quay về vị trí cũ */
+  }
+
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #ffffff;
+    /* Viền đen */
+    border-radius: 30px;
+    /* Bo tròn */
+    background-color: #fff;
+    font-size: 20px;
+    font-family: 'Josefin Sans', sans-serif;
+    box-sizing: border-box;
+    /* Rất quan trọng */
+}
+
+.input-group input::placeholder {
+    color: #595858;
+}
+
+.login-button {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 30px;
+    /* Bo tròn */
+    background-color: #3e5a5f;
+    /* Nền đen */
+    color: white;
+    /* Chữ trắng */
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Josefin Sans', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #333;
+}
+
+/* --- Cột 2: Hình ảnh --- */
+.login-image {
+    flex: 1;
+    /* Chiếm 1 phần */
+    background-color: transparent;
+    /* Màu vàng nhạt hơn (từ mockup) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.login-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.error-message {
+    color: #8b0d14;
+    /* Màu đỏ */
+    background-color: #ae6565;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center; /* Căn giữa chữ */
+    margin-bottom: 20px; /* Khoảng cách với nút LOG IN */
+}
+
+/* 1. KHỐI CHỨA TẤT CẢ BÔNG TUYẾT */
+.snowflakes {
+    position: fixed; /* Giữ tuyết cố định trên màn hình */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Cho phép người dùng click xuyên qua tuyết (Không chặn tương tác) */
+    pointer-events: none; 
+    /* Đảm bảo tuyết nằm trên cùng */
+    z-index: 9999; 
+}
+
+/* 2. STYLE CHO MỘT BÔNG TUYẾT */
+.snowflake {
+    position: absolute;
+    top: -50px; /* Bắt đầu rơi từ vị trí ngoài màn hình */
+    width: 10px; 
+    height: 10px;
+    background-color: #fff; /* Màu trắng */
+    border-radius: 50%; /* Hình tròn */
+    opacity: 0.8;
+    
+    /* Thiết lập kích thước (scale) ban đầu bằng biến CSS
+       để tránh xung đột với animation transform */
+    transform: scale(var(--scale-size, 1)); 
+    
+    /* CHỈ DÙNG MỘT ANIMATION TỔNG HỢP */
+    animation-name: snow-movement;
+    animation-timing-function: linear; 
+    animation-iteration-count: infinite;
+}
+
+/* 3. KEYFRAMES TỔNG HỢP: RƠI (Y) và LẮC LƯ (X) */
+/* Keyframe này bao gồm cả rơi và lắc lư, không cần keyframe 'fall' và 'sway' riêng biệt */
+@keyframes snow-movement {
+    /* Bắt đầu: Rơi dọc 0, Lắc ngang 0 */
+    0% { 
+        transform: translateY(0) translateX(0) scale(var(--scale-size)); 
+    }
+    /* Giữa chừng: Rơi 50% và lắc nhẹ sang phải */
+    50% {
+        transform: translateY(50vh) translateX(20px) scale(var(--scale-size)); 
+    }
+    /* Kết thúc: Rơi xuống hết màn hình (105vh) và lắc nhẹ trở lại vị trí cũ */
+    100% {
+        transform: translateY(105vh) translateX(0) scale(var(--scale-size)); 
+    }
+}
+
+.hidden {
+    display: none;
+}

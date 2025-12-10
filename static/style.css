@@ -1,0 +1,442 @@
+/* style.css */
+
+/* ======================================= */
+/* I. KHAI BÁO BIẾN VÀ CÀI ĐẶT CHUNG (RESETS) */
+/* ======================================= */
+:root {
+    --bg-light: #CFEBEF;         /* Màu nền xanh nhạt toàn trang */
+    --text-dark: #3e5a5f;        
+    --text-primary: #6d4b4b;     
+    --button-bg: #a4d8df;        
+    --button-border: #2c5963;    
+    --logo-color: #1a5e73;       
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    /* Loại bỏ height: 100% để cho phép cuộn */
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Josefin Sans', sans-serif;
+    color: var(--text-dark);
+    background-color: var(--bg-light); 
+}
+
+/* Khối bao bọc chung cho nội dung giới hạn */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ======================================= */
+/* II. HEADER (POSITION ABSOLUTE) */
+/* ======================================= */
+
+header {
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+}
+
+header nav.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vw 3vw; 
+}
+
+.logo a {
+    font-family: 'Gaegu', cursive;
+    font-weight: bold;
+    font-size: 3em;
+    color: var(--logo-color);
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5vw;
+    margin: 0; /* Đảm bảo không có margin mặc định */
+    padding: 0; /* Đảm bảo không có padding mặc định */
+}
+
+.nav-links li a {
+    font-family: 'Josefin Sans', sans-serif;
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+/* ======================================= */
+/* III. PHẦN LANDING PAGE (DÙNG GRID) */
+/* ======================================= */
+
+/* SỬA ĐỔI: HERO-IMAGE DÙNG LÀM CONTAINER CHUNG VÀ CHỨA ẢNH NỀN */
+.hero-image {
+    /* Khối này sẽ bao bọc toàn bộ nội dung Landing và About */
+    display: flex; /* Dùng Flexbox để chia 2 cột/khu vực */
+    width: 100%;
+    min-height: 100vh; /* Đảm bảo nó chiếm ít nhất 1 màn hình */
+    
+    /* QUAN TRỌNG: Thiết lập ảnh nền (Đã sửa đường dẫn) */
+    background-image: url('/static/image for website/nui-tuyet-01.svg');
+    background-repeat: no-repeat;
+    background-size: contain; /* Hoặc 'cover' tùy ý bạn */
+    
+    /* Định vị ảnh nền (Phía sau nội dung chữ và ở cột phải) */
+    background-position: right top; 
+    
+    /* Thiết lập Flexbox cho các khối con (main và section) */
+    flex-direction: column; 
+}
+
+/* SỬA ĐỔI: MAIN (chứa Landing Text) và SECTION (chứa About Text) */
+main {
+    /* Đã loại bỏ Grid cho main */
+    display: flex;
+    flex: 1; /* Cho phép main co giãn để chiếm đủ không gian ngang/dọc */
+    grid-column: 2 / 3;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center; /* Căn giữa dọc */
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* THÊM: Tạo 2 cột ảo bằng Flexbox cho nội dung chữ và ảnh */
+.hero-container {
+    flex: 1 1 50%; /* Chiếm 50% không gian ngang (Cột Trái) */
+    display: flex; /* Bật Flexbox để căn giữa chữ */
+    align-items: center; 
+    justify-content: center;
+    padding: 0 3vw; 
+}
+
+.hero-text {
+    /* Cấu hình Flexbox để CĂN GIỮA TUYỆT ĐỐI */
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; /* Căn giữa dọc */
+    align-items: center; /* Căn giữa ngang */
+    text-align: center;
+    position:relative;
+    height: 100%; 
+    width: 100%; /* Quan trọng: Đảm bảo nó chiếm đủ chiều rộng */
+    
+    /* QUAN TRỌNG: BỎ padding ngang 0 50px */
+    padding: 0; 
+}
+
+.hero-text h1 {
+    font-family: 'Gaegu', cursive;
+    font-size: 2.8em; 
+    color: var(--text-primary);
+    line-height: 1.2;
+    margin: 0 0 1.5vw 0;
+}
+
+/* Trong file style.css, thêm quy tắc cho quả mọng */
+
+.hero-text::before {
+    content: "";
+    /* QUAN TRỌNG: THAY background-image thành đường dẫn ảnh của bạn (Đã sửa) */
+    background-image: url('/static/image for website/qua-do-01.svg'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* Kích thước của quả mọng (Điều chỉnh theo ý bạn) */
+    width: 8vw; 
+    height: 8vw; 
+    
+    /* Định vị tuyệt đối */
+    position: absolute;
+    
+    /* Đặt phía trên tiêu đề một chút */
+    top: -9vw; /* Điều chỉnh giá trị âm này để nâng/hạ vị trí dọc */
+    
+    /* Gán animation lắc lư vào đây */
+    animation: berry-sway 4s ease-in-out infinite; /* 4s: Thời gian một chu kỳ, ease-in-out: hiệu ứng mềm mại, infinite: lặp lại vô hạn */
+
+    /* Căn giữa tuyệt đối so với chiều rộng của khối .hero-text */
+    left: 50%;
+    transform: translateX(-50%); 
+    
+    /* Đảm bảo nó nằm trên tất cả các lớp khác (chẳng hạn như header) */
+    z-index: 50; 
+}
+
+@keyframes berry-sway {
+    0% { transform: translateX(-50%) translateY(0px); } /* Bắt đầu ở vị trí cũ, không dịch chuyển dọc */
+    25% { transform: translateX(-55%) translateY(-5px); } /* Lắc nhẹ sang trái và hơi lên */
+    50% { transform: translateX(-50%) translateY(0px); } /* Quay về vị trí cũ */
+    75% { transform: translateX(-45%) translateY(-5px); } /* Lắc nhẹ sang phải và hơi lên */
+    100% { transform: translateX(-50%) translateY(0px); } /* Quay về vị trí cũ */
+  }
+
+.cta-buttons {
+    width: 100%;
+    text-align: center; 
+    margin-top: 10px;
+}
+
+.btn-primary {
+    display: inline-block; 
+    padding: 0.8em 2em; 
+    border-radius: 50px; 
+    background-color: var(--button-bg); 
+    color: var(--button-border); 
+    text-decoration: none;
+    border: 2px solid var(--button-border); 
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Khối ảnh (Cột 2) */
+.hero-image {
+    grid-column: 2 / 3; /* Cột 2 */
+    grid-row: 1 / 2;
+    position: relative; 
+    overflow: hidden;
+    height: 100%;
+}
+
+/* Trong file style.css, tìm quy tắc .hero-image::after */
+.hero-image::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;         /* Đảm bảo ảnh neo ở mép trái */
+    right: auto;
+    width: 50%;      /* Chiếm 50% */
+    height: 100%; 
+    background-repeat: no-repeat;
+    
+    /* SỬA ĐỔI QUAN TRỌNG ĐỂ KHÔNG BỊ LỆCH/THIẾU */
+    background-size: cover;      /* Lấp đầy 50% không gian, có thể cắt bớt nếu cần */
+    background-position: left bottom; /* Neo ảnh sang trái và xuống dưới */
+    
+    z-index: 1; 
+}
+
+/* Thêm quy tắc này vào cuối phần III. PHẦN LANDING PAGE trong style.css */
+main::before {
+    content: "";
+    /* Thay đổi đường dẫn ảnh bông tuyết của bạn tại đây (Đã sửa) */
+    background-image: url('/static/image for website/tuyet-01.svg'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    /* Vị trí và Kích thước của bông tuyết */
+    width: 6vw;  /* Điều chỉnh kích thước bông tuyết */
+    height: 6vw; /* Điều chỉnh kích thước bông tuyết */
+    
+    /* Định vị tuyệt đối (ví dụ: ở góc trên bên phải của khối chữ) */
+    position: absolute;
+    top: 8vw;   /* Cách mép trên 100px */
+    right: 4vw;  /* Cách mép phải 50px */
+    
+    z-index: 3; /* Đảm bảo nó nằm trên tất cả nội dung khác */
+}
+
+.santa-with-deer {
+    /* QUAN TRỌNG: THAY ĐỔI ĐƯỜNG DẪN ẢNH NÀY (Đã sửa) */
+    background-image: url('/static/image for website/tuan-loc-santa-claus-01.svg'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    /* Kích thước của Ông già Noel */
+    width: 20vw;  /* Điều chỉnh kích thước */
+    height: 20vw; /* Điều chỉnh kích thước */
+    
+    /* Định vị tuyệt đối */
+    position: absolute;
+    
+    /* Đặt ở góc dưới bên trái của #about-section */
+    bottom: 2vw; /* Cách mép dưới 20px */
+    left: 2vw;   /* Cách mép trái 40px (hoặc 0 nếu bạn muốn sát mép) */
+
+    
+    z-index: 3; /* Đảm bảo nó nằm trên nền */
+}
+
+/* ======================================= */
+/* IV. PHẦN ABOUT US (NỐI LIỀN BÊN DƯỚI) */
+/* ======================================= */
+
+#about-section {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: transparent; 
+    padding: 4vw 0; 
+    width: 100%;
+}
+
+.about-image {
+    grid-column: 1 / 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-image img {
+    max-width: 80%; 
+    height: auto;
+}
+
+.about-text {
+    grid-column: 2 / 3; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 4vw 0 0;
+    line-height: 1.5;
+}
+
+/* Trong file style.css, thêm đoạn này vào phần IV. PHẦN ABOUT US */
+
+.santa-image {
+    /* QUAN TRỌNG: THAY ĐỔI ĐƯỜNG DẪN ẢNH NÀY (Đã sửa) */
+    background-image: url('/static/image for website/santa-claus-01.svg'); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+    /* Kích thước của Ông già Noel */
+    width: 35vw;  /* Điều chỉnh kích thước */
+    height: 35vw; /* Điều chỉnh kích thước */
+    
+    /* Định vị tuyệt đối */
+    position: absolute;
+    
+    /* Đặt ở góc dưới bên trái của #about-section */
+    bottom: 5vw; /* Cách mép dưới 20px */
+    left: 5vw;   /* Cách mép trái 40px (hoặc 0 nếu bạn muốn sát mép) */
+    
+    z-index: 3; /* Đảm bảo nó nằm trên nền */
+}
+
+/* ======================================= */
+/* V. HIỆU ỨNG TUYẾT RƠI (SNOWFALL ANIMATION) */
+/* ======================================= */
+
+/* 1. KHỐI CHỨA TẤT CẢ BÔNG TUYẾT */
+.snowflakes {
+    position: fixed; /* Giữ tuyết cố định trên màn hình */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Cho phép người dùng click xuyên qua tuyết (Không chặn tương tác) */
+    pointer-events: none; 
+    /* Đảm bảo tuyết nằm trên cùng */
+    z-index: 9999; 
+}
+
+/* 2. STYLE CHO MỘT BÔNG TUYẾT */
+.snowflake {
+    position: absolute;
+    top: -50px; /* Bắt đầu rơi từ vị trí ngoài màn hình */
+    width: 10px; 
+    height: 10px;
+    background-color: #fff; /* Màu trắng */
+    border-radius: 50%; /* Hình tròn */
+    opacity: 0.8;
+    
+    /* Thiết lập kích thước (scale) ban đầu bằng biến CSS
+       để tránh xung đột với animation transform */
+    transform: scale(var(--scale-size, 1)); 
+    
+    /* CHỈ DÙNG MỘT ANIMATION TỔNG HỢP */
+    animation-name: snow-movement;
+    animation-timing-function: linear; 
+    animation-iteration-count: infinite;
+}
+
+/* 3. KEYFRAMES TỔNG HỢP: RƠI (Y) và LẮC LƯ (X) */
+/* Keyframe này bao gồm cả rơi và lắc lư, không cần keyframe 'fall' và 'sway' riêng biệt */
+@keyframes snow-movement {
+    /* Bắt đầu: Rơi dọc 0, Lắc ngang 0 */
+    0% { 
+        transform: translateY(0) translateX(0) scale(var(--scale-size)); 
+    }
+    /* Giữa chừng: Rơi 50% và lắc nhẹ sang phải */
+    50% {
+        transform: translateY(50vh) translateX(20px) scale(var(--scale-size)); 
+    }
+    /* Kết thúc: Rơi xuống hết màn hình (105vh) và lắc nhẹ trở lại vị trí cũ */
+    100% {
+        transform: translateY(105vh) translateX(0) scale(var(--scale-size)); 
+    }
+}
+
+/* Điều chỉnh cho máy tính bảng và màn hình nhỏ hơn (Ví dụ: dưới 1024px) */
+@media (max-width: 1024px) {
+    /* Điều chỉnh kích thước font chữ H1 */
+    .hero-text h1 {
+        font-size: 2.2em; /* Giảm kích thước */
+    }
+
+    /* Điều chỉnh kích thước của quả mọng */
+    .hero-text::before {
+        width: 120px;
+        height: 120px;
+        top: -90px;
+    }
+
+    /* Điều chỉnh vị trí/padding cho khối About Us */
+    .about-text {
+        padding: 0 50px;
+    }
+}
+
+/* Điều chỉnh cho điện thoại di động (Ví dụ: dưới 768px) */
+@media (max-width: 768px) {
+    /* Chuyển sang bố cục 1 cột cho About Us */
+    #about-section {
+        grid-template-columns: 1fr; /* 1 cột */
+        min-height: auto; /* Tự động co giãn theo nội dung */
+    }
+    
+    /* Ẩn ảnh ông già Noel trên màn hình nhỏ để tiết kiệm không gian */
+    .santa-image {
+        display: none; 
+    }
+    
+    /* Chuyển về căn giữa và giảm kích thước font */
+    .hero-text h1 {
+        font-size: 1.8em;
+    }
+    
+    .logo a {
+        font-size: 2em;
+    }
+
+    /* Đảm bảo nav bar hiển thị tốt */
+    header nav.container {
+        padding: 20px 20px; 
+    }
+
+    /* Giảm padding cho khối chữ About */
+    .about-text {
+        padding: 20px;
+    }
+    
+    /* Ẩn tuần lộc/santa-with-deer trên màn hình nhỏ */
+    .santa-with-deer {
+        display: none; 
+    }
+}

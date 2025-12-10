@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN - TRESGO</title>
+    <link rel="stylesheet" href="/static/login.style.css">
+    
+    <link rel="preconnect" href="https://fonts.google.com/specimen/Gaegu" crossorigin>
+    <link rel="preconnect" href="https://fonts.google.com/specimen/Josefin+Sans" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="login-card">
+        <div class="snowflakes" aria-hidden="true"></div>
+        <div class="snow-mountain"></div>
+
+        <div class="login-form">
+            <h2>WELCOME TO TRESGO</h2>
+
+            <div class="input-group">
+                <input type="text" id="token-input" placeholder="Insert the token">
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="name-input" placeholder="Insert your name">
+            </div>
+
+            <p id="error-message" class="error-message hidden"></p>
+            <button class="login-button">LOG IN</button>
+        </div>
+
+        <div class="login-image">
+            <img src="/static/image for website/santa-letsgo-01-01.svg"
+                alt="Login illustration">
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const snowflakesContainer = document.querySelector('.snowflakes');
+            const numberOfSnowflakes = 40; 
+
+            if (!snowflakesContainer) {
+                console.error("Lỗi: Không tìm thấy div có class 'snowflakes'.");
+                return;
+            }
+
+            for (let i = 0; i < numberOfSnowflakes; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+
+                // Chỉ dùng MỘT giá trị duration cho animation tổng hợp 'snow-movement'
+                const animationDuration = `${Math.random() * 7 + 5}s`; 
+                const scaleSize = Math.random() * 0.7 + 0.3; 
+
+                // Gán thời gian
+                snowflake.style.animationDuration = animationDuration; 
+
+                // Vị trí ngang ngẫu nhiên và delay âm
+                snowflake.style.left = `${Math.random() * 100}vw`;
+                snowflake.style.animationDelay = `-${Math.random() * 10}s`; 
+                
+                snowflake.style.opacity = `${Math.random() * 0.7 + 0.3}`; 
+                
+                // Gán scale vào biến CSS để không xung đột với animation
+                snowflake.style.setProperty('--scale-size', scaleSize); 
+
+                snowflakesContainer.appendChild(snowflake);
+            }
+        });
+    </script>
+
+    <script src="/static/login.js"></script>
+
+</body>
+
+</html>

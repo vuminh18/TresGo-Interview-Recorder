@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRESGO - Interview website</title>
+    <link rel="stylesheet" href="/static/style.css">
+    
+    <link rel="preconnect" href="https://fonts.google.com/specimen/Gaegu" crossorigin>
+    <link rel="preconnect" href="https://fonts.google.com/specimen/Josefin+Sans" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+    <div class="snowflakes" aria-hidden="true"></div>
+    <div class="santa-with-deer"></div>
+
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <a href="#">TRESGO</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about-section" class="btn btn-secondary">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero-image">
+        
+        <main>
+            <div class="hero-container">
+
+                <div class="hero-text">
+                    <h1>TURNING INTERVIEW<br>INTO INSIGHT WITH TRESGO</h1>  
+
+                    <div class="cta-buttons">
+                        <a href="/static/login.html" class="btn btn-primary">Start</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <section id="about-section" class="about-container">
+            <div class="santa-image"></div>
+
+            <div class="about-text">
+                <h2>ABOUT US</h2>
+                <p>
+                    Tresgo is build on purpose of providing a
+                    smoother, more comfortable video -interview 
+                    experience to every candidate.
+                </p>
+                <p>
+                    With our “per-question upload” system, you 
+                    record one answer at a time, press next, and
+                    your response is saved instantly.
+                </p>
+                <p>
+                    It is faster, simpler, and designed to help you 
+                    present your best self as you move toward your 
+                    next career opportunity.
+                </p>
+
+                <h4>Member</h4>
+
+                <div class="about-text">
+                    <p>Nguyen Thi Thuy Linh<br>Pham Mai Phuong<br>Vu Kim Minh</p>
+                </div>
+            </div>
+        </section>
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const snowflakesContainer = document.querySelector('.snowflakes');
+                const numberOfSnowflakes = 40; 
+    
+                if (!snowflakesContainer) {
+                    return;
+                }
+    
+                for (let i = 0; i < numberOfSnowflakes; i++) {
+                    const snowflake = document.createElement('div');
+                    snowflake.classList.add('snowflake');
+    
+                    const animationDuration = `${Math.random() * 7 + 5}s`; 
+                    const scaleSize = Math.random() * 0.7 + 0.3; 
+    
+                    snowflake.style.animationDuration = animationDuration; 
+                    snowflake.style.left = `${Math.random() * 100}vw`;
+                    snowflake.style.animationDelay = `-${Math.random() * 10}s`; 
+                    snowflake.style.opacity = `${Math.random() * 0.7 + 0.3}`; 
+                    snowflake.style.setProperty('--scale-size', scaleSize); 
+    
+                    snowflakesContainer.appendChild(snowflake);
+                }
+            });
+        </script>
+
+        </div>
+    
+</body>
+</html>
