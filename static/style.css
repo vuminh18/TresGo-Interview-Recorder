@@ -84,7 +84,7 @@ header nav.container {
     min-height: 100vh; /* Đảm bảo nó chiếm ít nhất 1 màn hình */
     
     /* QUAN TRỌNG: Thiết lập ảnh nền (Đã sửa đường dẫn) */
-    background-image: url('/static/image for website/nui-tuyet-01.svg');
+    background-image: url('/static/nui-tuyet-01.svg');
     background-repeat: no-repeat;
     background-size: contain; /* Hoặc 'cover' tùy ý bạn */
     
@@ -214,20 +214,31 @@ main {
     height: 100%;
 }
 
-/* Trong file style.css, tìm quy tắc .hero-image::after */
+/* Tìm đoạn này trong style.css và thay thế toàn bộ */
 .hero-image::after {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;         /* Đảm bảo ảnh neo ở mép trái */
+    
+    /* 1. Bỏ top, neo vào đáy để núi luôn nằm trên mặt đất */
+    top: auto;
+    bottom: 0; 
+    
+    /* 2. KỸ THUẬT SỐ ÂM: Kéo lùi sang trái 10px để che kín mọi khe hở */
+    left: -10px; 
+    
     right: auto;
-    width: 50%;      /* Chiếm 50% */
+    
+    /* 3. Tăng chiều rộng lên một chút (dùng đơn vị vw) để bù cho phần bị kéo sang trái */
+    width: 60vw; /* 60% chiều rộng màn hình */
+    
     height: 100%; 
     background-repeat: no-repeat;
     
-    /* SỬA ĐỔI QUAN TRỌNG ĐỂ KHÔNG BỊ LỆCH/THIẾU */
-    background-size: cover;      /* Lấp đầy 50% không gian, có thể cắt bớt nếu cần */
-    background-position: left bottom; /* Neo ảnh sang trái và xuống dưới */
+    /* 4. Dùng cover để ảnh phủ kín vùng chứa */
+    background-size: cover; 
+    
+    /* 5. Neo ảnh vào góc dưới cùng bên trái */
+    background-position: bottom left; 
     
     z-index: 1; 
 }
